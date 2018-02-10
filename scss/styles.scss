@@ -5,10 +5,24 @@
 * {
 	box-sizing: border-box;
 }
-
+h1, h2, h2, h4, h5, h6 {
+	margin: 0;
+}
 html, body {
 	min-height: 100vh;
 	min-width:1024px;
+}
+.container {
+	width: 1170px;
+	height:100vh;
+	display: flex;
+	justify-content:space-between;
+	margin: 0 auto;
+	font-size:0px;
+			
+}
+.header .container {
+	flex-direction: column;
 }
 .header {
 	min-width:100%;
@@ -18,14 +32,11 @@ html, body {
 	background-color: $secondary-color;
 	background-repeat:no-repeat;
 	position: relative;
-		
-	&__container {
-		width: 1170px;
-		height:100vh;
-		margin: 0 auto;
-		font-size:0px;
-			
+	&__wrap {
+		width: 100%;
+		height: 150px;
 	}
+		
 	&__logo {
 		font-family: $logo-ff;
 		display: inline-block;
@@ -71,7 +82,7 @@ html, body {
 	}
 	&__info {
 		width:33%;
-		padding-top:200px;
+		padding-bottom:300px;
 	}
 	&__title {
 		display:inline-block;
@@ -91,18 +102,10 @@ html, body {
 		
 	}
 	&__button {
-		padding:16px 24px;
-		color:$secondary-color;
-		font-size:20px;
+		@include button;
 		border: $border-width solid $accent-color;
-		font-weight:$text-weight;
-		text-transform: uppercase;
 		background-color: $accent-color;
-		-webkit-appearance:none;
-		overflow:hidden;
-		outline:none;
-		box-shadow:$shadow;
-		transition:all .25s ease;
+		left: 54px;
 		&:hover,
 		&:focus,
 		&:active {
@@ -112,11 +115,12 @@ html, body {
 		}
 	}
 	&__scroll {
+		background-image:url(../img/scroll.png);
+		background-repeat: no-repeat;
+		background-size: contain;
 		width:30px;
 		height:40px;
 		padding:20px 15px;
-		background-repeat: no-repeat;
-		background-size: contain;
 		position: absolute;
 		bottom: 70px;
 		left: 50%;
@@ -136,13 +140,7 @@ html, body {
 }
 .about {
 	background: rgba(0, 195, 195, 1) radial-gradient(ellipse at 150%, rgba(0, 195, 195, 1), rgba(0, 195, 195, .9) );
-	&__container {
-		width: 1170px;
-		height:100vh;
-		margin: 0 auto;
-		font-size:0px;
 	
-	}
 	&__img {
 		display:inline-block;
 		padding:10% 3%;
@@ -155,18 +153,17 @@ html, body {
 		filter: drop-shadow(-25px 20px 35px rgba(0, 0, 0, 0.3));
 	}
 	&__info {
-		display:inline-block;
+		display:flex;
+		flex-direction: column;
+		justify-content: center;
 		height: 100%;
 		width:50%;
 		padding-left:70px;
-		vertical-align: middle;
 		font-family: $text-ff;
 		color: $secondary-color;
 	}
 	&__title {
 		@include title;
-		margin:180px 0 20px;
-		
 		
 	}
 	&__text {
@@ -174,22 +171,15 @@ html, body {
 		padding:0 0 20px;
 		@include text;
 		text-align:center;
+		align-self: flex-end;
 	}
 }
+
 .services {
 	font-family: $text-ff;
 	font-weight: $title-weight;
 	background-color: #70bfff;
 	
-	&__container {
-		display:flex;
-		flex-direction: row-reverse;
-		justify-content:space-between;
-		width: 1170px;
-		height:100vh;
-		margin: 0 auto;
-		font-size:0px;
-	}
 	&__wrap {
 		height: 100%;
 		width:50%;
@@ -234,6 +224,7 @@ html, body {
 		margin: 0 auto;
 		width:400px;
 		height: 100%;
+		line-height: 1;
 		padding:40px 140px 40px 40px;
 		list-style-type: none;
 		text-decoration: none;
@@ -256,22 +247,20 @@ html, body {
 		transform:translate(50%, 50%);
 	}
 }
+.gallery .container {
+	flex-direction: column;
+	height: 1540px;
+	justify-content: flex-start;
+	padding: 80px 0;
+}
 .gallery {
 	background-color: #ffe92f;
 	position: relative;
-	&__container {
-		width: 1200px;
-		height:1540px;
-		padding:90px 0;
-		margin: 0 auto;
-		font-size:0px;
-		display: flex;
-		flex-direction: column;
-	}
+	
 	&__title {
 		@include title;
 		text-align:center;
-		padding: 0 285px 30px; 
+		// padding: 0 285px 30px; 
 	}
 	&__text {
 		margin:0;
@@ -406,20 +395,21 @@ html, body {
 		}
 	}		
 }
+.subscribe .container {
+	height:500px;
+	padding:130px 0 160px;
+	position: relative;
+}	
+.subscribe .container {
+	flex-direction: column;
+	position: relative;
+}
 .subscribe {
 	background-color: #fff;
 	background-repeat:no-repeat;
-	-webkit-background-size: contain;
-	     -o-background-size: contain;
-	        background-size: contain;
-	&__container {
-		margin:0 auto;
-		width: 1170px;
-		height:500px;
-		padding:130px 0 160px;
-		font-size:0px;
-		position: relative;
-	}
+	background-position: right;
+	background-size: 40%;
+	
 	&__title {	
 		font-family: $text-ff;
 		font-size: 40px;
@@ -484,7 +474,7 @@ html, body {
 		box-shadow:$shadow;
 		position: absolute;
 		left: 50%;
-		bottom: 177px;
+		bottom: 161px;
 		transition:all .1s ease .1s;
 	
 		&:hover,
@@ -496,18 +486,14 @@ html, body {
 		}
 	}
 }
+.blog .container {
+	flex-direction: column;
+	justify-content: flex-start;
+	padding: 40px 0;
+}
 .blog {
 	background-color: #b07cf7;
-	&__container {
-		display: flex;
-		flex-direction: column;
-		margin: 0 auto;
-		width: 1170px;
-		height:100vh;
-		padding:30px 0 50px;
-		font-size:0px;
-		position: relative;
-	}
+	position: relative;
 	&__title {
 
 		@include title;
@@ -553,6 +539,7 @@ html, body {
 		box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.5); 
 		position: relative;
 		&_link {
+			display: inline-block;
 			width: 100%;
 			height: 100%;
 			text-decoration: none;
@@ -617,7 +604,11 @@ html, body {
 			font-weight: $title-weight;	
 			position: absolute;
 			bottom: 60px;
+			line-height: 1.2;
 			left: 20px;
+			right: 20px;
+			max-height: calc(20px * 4 * 1.2);
+			overflow: hidden;
 		}
 		&_author,
 		&_pubtime {
@@ -650,22 +641,17 @@ html, body {
 		}
 	}
 }
+.contact .container {
+	flex-direction: column;
+	justify-content: flex-start;
+}
 .contact {
 	background-repeat:no-repeat;
 	-webkit-background-size: cover;
 	     -o-background-size: cover;
 	        background-size: cover;
-
-	&__container {
-		width: 1170px;
-		height:100vh;
-		padding:0 0 80px;
-		font-size:0px;
-		margin: 0 auto;
-		color: $text-color;
-		display: flex;
-		flex-direction: column;
-	}
+	color: $text-color;
+		
 	&__title{
 		@include title;	
 		text-align: center;
@@ -751,6 +737,10 @@ html, body {
 		color: $text-color;
 	}
 }
+.footer .container {
+	height: 100%;
+	align-items: center;
+}
 .footer {
 	height: 90px;
 	font-family: $text-ff;
@@ -758,15 +748,6 @@ html, body {
 	background-color: #262626;
 	vertical-align: middle;
 	font-weight: $text-weight;
-	&__container {
-		margin: 0 auto;
-		width: 1170px;
-		height: 100%;
-		display: flex;
-		justify-content:space-between;
-		align-items: center;
-
-	}
 	&__copyright {
 		font-size:16px;
 	}
